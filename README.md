@@ -34,8 +34,10 @@ This repository has been tested under the following environment:
   Training datasets will come soon.
  
 
-## Result
-![Estimation Result]()
+## Results
+![Estimation Result](https://raw.githubusercontent.com/deepinx/face-gender-age/master/sample-images/detection%20result_t1_1_21.02.2019.png)
+
+![Estimation Result](https://raw.githubusercontent.com/deepinx/face-gender-age/master/sample-images/detection%20result_t1_4_21.02.2019.png)
 
 ## License
 
