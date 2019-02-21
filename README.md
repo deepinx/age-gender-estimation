@@ -1,7 +1,7 @@
 
-## The MXNet Implementation of Face Gender and Age Estimation
+## The MXNet Implementation of Face Age and Gender Estimation
 
-This repository contains a lightweight model for face gender and age estimation. The model is very small and efficient about 1MB size, 10ms on single CPU core. Gender accuracy 96% on validation set and 4.1 age MAE.
+This repository contains a lightweight model for face age and gender estimation. The model is very small and efficient about 1MB size, 10ms on single CPU core. Gender accuracy 96% on validation set and 4.1 age MAE.
 
 Two methods ([MTCNN](https://github.com/deepinx/mtcnn-face-detection) and [ESSH](https://github.com/deepinx/enhanced-ssh-mxnet)) is both provided in this repository for face detection and alignment. For easy cases, the two methods are almost the same, however, on hard cases the ESSH method has a much better detection results. You can use ``python test.py --det 0`` to choose MTCNN method, or use ``python test.py --det 1`` for ESSH.
 
