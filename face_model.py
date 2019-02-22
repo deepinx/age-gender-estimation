@@ -75,21 +75,25 @@ class FaceModel:
       bbox, points = ret
       if bbox.shape[0]==0:
         return None
-      bbox = bbox[0,0:4]
-      points = points[0,:].reshape((2,5)).T
+      bbox = bbox[:,0:4]
+      points = points[:,:].reshape((-1,2,5))
+      points = np.transpose(points, (0,2,1))
     else:
       ret = self.detector.detect(face_img, 0.5, scales=[1.0])
       if ret is None:
         return None
-      bbox = ret[0,0:4]
-      points = ret[0,5:15].reshape((5,2))
+      bbox = ret[:,0:4]
+      points = ret[:,5:15].reshape((-1,5,2))
 
     #print(bbox)
     #print(points)
-    nimg = face_preprocess.preprocess(face_img, bbox, points, image_size='112,112')
-    nimg = cv2.cvtColor(nimg, cv2.COLOR_BGR2RGB)
-    aligned = np.transpose(nimg, (2,0,1))
-    input_blob = np.expand_dims(aligned, axis=0)
+    input_blob = np.zeros((bbox.shape[0], 3, 112, 112))
+    for i in range(bbox.shape[0]):
+      nimg = face_preprocess.preprocess(face_img, bbox[i,:], points[i,:], image_size='112,112')
+      nimg = cv2.cvtColor(nimg, cv2.COLOR_BGR2RGB)
+      aligned = np.transpose(nimg, (2,0,1))
+      # input_blob = np.expand_dims(aligned, axis=0)
+      input_blob[i,:] = aligned
     data = mx.nd.array(input_blob)
     db = mx.io.DataBatch(data=(data,))
 
@@ -99,11 +103,11 @@ class FaceModel:
   def get_ga(self, data):
     self.model.forward(data, is_train=False)
     ret = self.model.get_outputs()[0].asnumpy()
-    g = ret[:,0:2].flatten()
-    gender = np.argmax(g)
-    a = ret[:,2:202].reshape( (100,2) )
-    a = np.argmax(a, axis=1)
-    age = int(sum(a))
+    g = ret[:,0:2]
+    gender = np.argmax(g, axis=1)
+    a = ret[:,2:202].reshape((-1,100,2))
+    a = np.argmax(a, axis=2)
+    age = np.sum(a, axis=1)
 
     return gender, age
 
