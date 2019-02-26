@@ -280,6 +280,7 @@ def train_net(args):
     lr_steps = [int(x) for x in args.lr_steps.split(',')]
 
     global_step = [0]
+    save_step = [0]
     def _batch_callback(param):
       _cb(param)
       global_step[0]+=1
@@ -291,14 +292,24 @@ def train_net(args):
           break
       if mbatch%1000==0:
         print('lr-batch-epoch:',opt.lr,param.nbatch,param.epoch)
-      if mbatch==lr_steps[-1]:
+      if args.max_steps>0 and mbatch>args.max_steps:
+        sys.exit(0)
+
+    def _epoch_callback(epoch, symbol, arg_params, aux_params):
+      save_step[0]+=1
+      msave = save_step[0]
+      do_save = False
+      if args.ckpt==0:
+        do_save = False
+      elif args.ckpt==2:
+        do_save = True
+      if do_save:
+        print('saving %s'%msave)
         arg, aux = model.get_params()
         all_layers = model.symbol.get_internals()
         _sym = all_layers['fc1_output']
-        mx.model.save_checkpoint(args.prefix, 0, _sym, arg, aux)
-        sys.exit(0)
+        mx.model.save_checkpoint(args.prefix, msave, _sym, arg, aux)
 
-    epoch_cb = None
     train_dataiter = mx.io.PrefetchingIter(train_dataiter)
     print('start fitting')
 
@@ -315,7 +326,7 @@ def train_net(args):
         aux_params         = aux_params,
         allow_missing      = True,
         batch_end_callback = _batch_callback,
-        epoch_end_callback = epoch_cb )
+        epoch_end_callback = _epoch_callback )
 
 def main():
     #time.sleep(3600*6.5)

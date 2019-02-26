@@ -155,8 +155,8 @@ class FaceImageIter(io.DataIter):
             while i < batch_size:
                 #print('XXXX', i)
                 label, s, bbox, landmark = self.next_sample()
-                gender = int(label[0])
-                age = int(label[1])
+                gender = int(label[0])  
+                age = int(label[1])   
                 assert age>=0
                 #assert gender==0 or gender==1
                 plabel = np.zeros(shape=(101,), dtype=np.float32)
