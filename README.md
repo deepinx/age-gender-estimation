@@ -29,9 +29,11 @@ This repository has been tested under the following environment:
 
 ## Training
 
-  You can use `python train.py` to train your own models.
-  
-  Training datasets will come soon.
+Train MobileNet 0.25X on a GPU such as GTX-1080Ti, you can use
+```
+CUDA_VISIBLE_DEVICES='0' python -u train.py --data-dir $DATA_DIR --prefix './models/model' --network m1 --per-batch-size 128 --lr 0.01 --lr-steps '10000' --ckpt 2 --multiplier 0.25
+```
+Training datasets will come soon.
  
 
 ## Results
