@@ -32,7 +32,7 @@ You can download rec format file directly in here: [baiducloud](https://pan.baid
 
 Train MobileNet 0.25X on a GPU such as GTX-1080Ti, you can use
 ```
-CUDA_VISIBLE_DEVICES='0' python -u train.py --data-dir $DATA_DIR --prefix './models/model' --network m1 --per-batch-size 128 --lr 0.01 --lr-steps '10000' --ckpt 2 --multiplier 0.25
+CUDA_VISIBLE_DEVICES='0' python -u train.py --data-dir $DATA_DIR --prefix './models/model' --network m1 --multiplier 0.25 --per-batch-size 128 --lr 0.01 --lr-steps '10000' --ckpt 2
 ```
 
 ## Testing
