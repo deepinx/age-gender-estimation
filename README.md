@@ -21,19 +21,25 @@ This repository has been tested under the following environment:
     
 3.  Type  `make`  to build necessary cxx libs.
 
-## Testing
-
-  -  Download the ESSH model from [baiducloud](https://pan.baidu.com/s/1sghM7w1nN3j8-UHfBHo6rA) or [googledrive](https://drive.google.com/open?id=1eX_i0iZxZTMyJ4QccYd2F4x60GbZqQQJ) and place it in *`./ssh-model/`*.
-
-  -  You can use `python test.py` to test the pre-trained models.
 
 ## Training
+
+You can download rec format file directly in here: [baiducloud](https://pan.baidu.com/s/112tf6HQy3Yvo6F9L4jZopg) or [googledrive](https://drive.google.com/open?id=1ztT0XM3aVUHIBCe8H1ch9rJMoS49PTql) , or package it youself according to the following steps
+
++ Download IMDB-WIKI dataset (face only) from https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/.
++ Unzip them under '~/data' or others path.
++ Pre-process each images in dataset and package it in a rec file.
 
 Train MobileNet 0.25X on a GPU such as GTX-1080Ti, you can use
 ```
 CUDA_VISIBLE_DEVICES='0' python -u train.py --data-dir $DATA_DIR --prefix './models/model' --network m1 --per-batch-size 128 --lr 0.01 --lr-steps '10000' --ckpt 2 --multiplier 0.25
 ```
-Training datasets will come soon.
+
+## Testing
+
+  -  Download the ESSH model from [baiducloud](https://pan.baidu.com/s/1sghM7w1nN3j8-UHfBHo6rA) or [googledrive](https://drive.google.com/open?id=1eX_i0iZxZTMyJ4QccYd2F4x60GbZqQQJ) and place it in *`./ssh-model/`*.
+
+  -  You can use `python test.py` to test the pre-trained models or your own models.
  
 
 ## Results
