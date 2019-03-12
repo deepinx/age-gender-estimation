@@ -24,7 +24,7 @@ This repository has been tested under the following environment:
 
 ## Training
 
-You can download rec format file directly in here: [baiducloud](https://pan.baidu.com/s/112tf6HQy3Yvo6F9L4jZopg) or [googledrive](https://drive.google.com/open?id=1ztT0XM3aVUHIBCe8H1ch9rJMoS49PTql) , or package it youself according to the following steps
+You can download rec format file directly in here: [BaiduCloud](https://pan.baidu.com/s/112tf6HQy3Yvo6F9L4jZopg) or [GoogleDrive](https://drive.google.com/open?id=1ztT0XM3aVUHIBCe8H1ch9rJMoS49PTql) , or package it youself according to the following steps
 
 + Download IMDB-WIKI dataset (face only) from https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/.
 + Unzip them under *`./data`* or others path.
@@ -38,7 +38,7 @@ Instead, you can edit *`train.sh`* and run *`sh ./train.sh`* to train your model
 
 ## Testing
 
-  -  Download the ESSH model from [baiducloud](https://pan.baidu.com/s/1sghM7w1nN3j8-UHfBHo6rA) or [googledrive](https://drive.google.com/open?id=1eX_i0iZxZTMyJ4QccYd2F4x60GbZqQQJ) and place it in *`./ssh-model/`*.
+  -  Download the ESSH model from [BaiduCloud](https://pan.baidu.com/s/1sghM7w1nN3j8-UHfBHo6rA) or [GoogleDrive](https://drive.google.com/open?id=1eX_i0iZxZTMyJ4QccYd2F4x60GbZqQQJ) and place it in *`./ssh-model/`*.
 
   -  You can use `python test.py` to test the pre-trained models or your own models.
  
