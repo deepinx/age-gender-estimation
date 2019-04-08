@@ -16,6 +16,7 @@ from mxnet import ndarray as nd
 import argparse
 import mxnet.optimizer as optimizer
 #import face_image
+sys.path.append(os.path.join(os.path.dirname(__file__), 'symbols'))
 import fresnet
 import fmobilenet 
 
