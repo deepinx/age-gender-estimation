@@ -45,7 +45,9 @@ Instead, you can edit *`train.sh`* and run *`sh ./train.sh`* to train your model
 
 ## Results
 
-<div align=center><img src="https://raw.githubusercontent.com/deepinx/age-gender-estimation/master/sample-images/detection%20result_test1_22.02.2019.png" width="700"/></div>
+Results of face age and gender estimation (inferenced from model MobileNet 0.25X) are shown below.
+
+<div align=center><img src="https://raw.githubusercontent.com/deepinx/age-gender-estimation/master/sample-images/detection%20result_test1_22.02.2019.png" width="750"/></div>
 
 ## License
 
